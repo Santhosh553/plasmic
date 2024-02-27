@@ -312,16 +312,23 @@ export function main() {
           "setLatestPublishedVersionData",
         ].includes(data?.path?.[0])
       ) {
-        studioPlaceholder.classList.add("fadeOut");
+        studioPlaceholder?.classList.add("fadeOut");
       }
     });
 
-    ReactDOM.render(<Shell />, appContainerElement);
+    ReactDOM.render(
+      <React.StrictMode>
+        <Shell />
+      </React.StrictMode>,
+      appContainerElement
+    );
   } else {
     ReactDOM.render(
-      <HostFrameCtxProvider>
-        <Shell />
-      </HostFrameCtxProvider>,
+      <React.StrictMode>
+        <HostFrameCtxProvider>
+          <Shell />
+        </HostFrameCtxProvider>
+      </React.StrictMode>,
       appContainerElement
     );
   }
